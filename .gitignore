@@ -61,9 +61,6 @@ logs/
 # Email credentials (sensitive)
 email_credentials.json
 
-# Docker
-.dockerignore
-
 # Temporary files
 tmp/
 temp/

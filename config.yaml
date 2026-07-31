@@ -1,5 +1,5 @@
-assistant_name: "Mark's AI Assistant"
-user_name: "Mark"
+assistant_name: "Paul's AI Assistant"
+user_name: "Paul"
 
 # Define your topics of interest - IMPROVED with more active feeds
 topics:
@@ -14,8 +14,8 @@ topics:
       - type: "rss"
         url: "https://blog.google/technology/ai/rss/"
       # These are less frequent but high quality (keep them)
-      - type: "rss"
-        url: "https://blog.openai.com/rss/"
+      # - type: "rss"
+      #   url: "https://blog.openai.com/rss/"  # unresolvable hostname
       - type: "rss"
         url: "https://www.anthropic.com/news/rss.xml"
   
@@ -50,8 +50,8 @@ topics:
         url: "https://blog.gitguardian.com/feed/"
       - type: "rss"
         url: "https://www.veracode.com/blog/feed"
-      - type: "rss"
-        url: "https://blog.checkmarx.com/feed/"
+      # - type: "rss"
+      #   url: "https://blog.checkmarx.com/feed/"  # unresolvable hostname
       - type: "rss"
         url: "https://www.contrastsecurity.com/blog/rss"
       - type: "rss"
@@ -98,8 +98,8 @@ topics:
         url: "https://charity.wtf/feed/"
       - type: "rss"
         url: "https://randsinrepose.com/feed/"
-      - type: "rss"
-        url: "https://www.engineeringleadership.com/feed/"
+      # - type: "rss"
+      #   url: "https://www.engineeringleadership.com/feed/"  # unresolvable hostname
       - type: "rss"
         url: "https://www.manager-tools.com/feed"
       # Team productivity and culture
@@ -110,8 +110,8 @@ topics:
       # High-quality professional newsletters
       - type: "rss"
         url: "https://softwareleadweekly.com/feed"
-      - type: "rss"
-        url: "https://www.engineeringleadership.com/feed/"
+      # - type: "rss"
+      #   url: "https://www.engineeringleadership.com/feed/"  # unresolvable hostname
       - type: "rss"
         url: "https://firstround.com/review/feed"
       - type: "rss"
@@ -219,15 +219,15 @@ topics:
         url: "https://grafana.com/blog/rss/"
       - type: "rss"
         url: "https://www.datadoghq.com/blog/rss/"
-      - type: "rss"
-        url: "https://www.newrelic.com/blog/rss"
+      # - type: "rss"
+      #   url: "https://www.newrelic.com/blog/rss"  # unresolvable hostname
       - type: "rss"
         url: "https://www.splunk.com/en_us/blog/rss.xml"
       # Infrastructure as Code
       - type: "rss"
         url: "https://www.terraform.io/blog/rss.xml"
-      - type: "rss"
-        url: "https://blog.ansible.com/rss/"
+      # - type: "rss"
+      #   url: "https://blog.ansible.com/rss/"  # unresolvable hostname
       - type: "rss"
         url: "https://www.pulumi.com/blog/rss/"
       # Container and Orchestration
@@ -316,8 +316,8 @@ topics:
     category: "Technology"
     sources:
       # Daily active sources
-      - type: "rss"
-        url: "https://hnrss.org/frontpage"  # Hacker News
+      # - type: "rss"
+      #   url: "https://hnrss.org/frontpage"  # Hacker News - unresolvable hostname
       - type: "rss"
         url: "https://feeds.arstechnica.com/arstechnica/index"
       - type: "rss"
@@ -347,8 +347,8 @@ topics:
       # AI Research
       - type: "rss"
         url: "https://ai.googleblog.com/feeds/posts/default"
-      - type: "rss"
-        url: "https://blog.openai.com/rss/"
+      # - type: "rss"
+      #   url: "https://blog.openai.com/rss/"  # unresolvable hostname
       - type: "rss"
         url: "https://www.anthropic.com/news/rss.xml"
       - type: "rss"
@@ -402,7 +402,7 @@ topics:
 
 # Summarization settings
 summarization:
-  model: "claude-3-5-sonnet-20241022"
+  model: "claude-haiku-4-5-20251001"
   max_articles_per_topic: 5
   summary_length: "brief"  # brief, medium, or detailed
   

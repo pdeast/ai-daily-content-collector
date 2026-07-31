@@ -6,11 +6,14 @@ Handles email formatting and delivery
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from email.utils import parseaddr
 from datetime import datetime
 from typing import Dict, List
 import os
 import logging
 from jinja2 import Template
+
+from .env_secrets import get_secret
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -23,7 +26,7 @@ class EmailSender:
         self.smtp_port = int(os.getenv("SMTP_PORT", "587"))
         self.email_from = os.getenv("EMAIL_FROM")
         self.email_to = os.getenv("EMAIL_TO")
-        self.email_password = os.getenv("EMAIL_PASSWORD")
+        self.email_password = get_secret("EMAIL_PASSWORD")
         
         if not all([self.email_from, self.email_to, self.email_password]):
             raise ValueError("Email configuration incomplete. Check EMAIL_FROM, EMAIL_TO, and EMAIL_PASSWORD environment variables.")
@@ -268,7 +271,8 @@ class EmailSender:
             # Send email with timeout protection
             with smtplib.SMTP(self.smtp_server, self.smtp_port, timeout=30) as server:
                 server.starttls()
-                server.login(self.email_from, self.email_password)
+                _, login_address = parseaddr(self.email_from)
+                server.login(login_address, self.email_password)
                 server.send_message(msg)
             
             logger.info(f"Email sent successfully to {self.email_to}")

@@ -12,6 +12,8 @@ from urllib.parse import urlparse
 from openai import OpenAI
 from anthropic import Anthropic
 
+from .env_secrets import get_secret
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -29,12 +31,12 @@ class AISummarizer:
         self.model = model
         
         if provider == "openai":
-            api_key = os.getenv("OPENAI_API_KEY")
+            api_key = get_secret("OPENAI_API_KEY")
             if not api_key:
                 raise ValueError("OPENAI_API_KEY not found in environment variables")
             self.client = OpenAI(api_key=api_key)
         elif provider == "perplexity":
-            api_key = os.getenv("PERPLEXITY_API_KEY")
+            api_key = get_secret("PERPLEXITY_API_KEY")
             if not api_key:
                 raise ValueError("PERPLEXITY_API_KEY not found in environment variables")
             self.client = OpenAI(
@@ -42,7 +44,7 @@ class AISummarizer:
                 base_url="https://api.perplexity.ai"
             )
         elif provider == "claude":
-            api_key = os.getenv("ANTHROPIC_API_KEY")
+            api_key = get_secret("ANTHROPIC_API_KEY")
             if not api_key:
                 raise ValueError("ANTHROPIC_API_KEY not found in environment variables")
             self.client = Anthropic(api_key=api_key)

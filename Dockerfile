@@ -14,9 +14,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy application files
 COPY . .
 
-# Create volume for config
-VOLUME ["/app/config"]
-
 # Set environment variables
 ENV PYTHONUNBUFFERED=1
 
