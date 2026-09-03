@@ -268,8 +268,8 @@ topics:
     sources:
       - type: "rss"
         url: "https://blog.rapid7.com/feed/"
-      - type: "rss"
-        url: "https://www.crowdstrike.com/blog/feed/"
+      # - type: "rss"
+      #   url: "https://www.crowdstrike.com/blog/feed/"
       - type: "rss"
         url: "https://www.paloaltonetworks.com/blog/feed"
       - type: "rss"
