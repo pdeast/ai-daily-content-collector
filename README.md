@@ -305,9 +305,24 @@ sudo systemctl enable ai-assistant
 sudo systemctl start ai-assistant
 ```
 
-### Docker Deployment (Optional)
+### Docker Deployment
 
-Coming soon! You can also containerize this application for easy deployment.
+The included `Dockerfile` and `docker-compose.yml` run the scheduler in a container. `config.yaml` and `.env` are not baked into the image — `docker-compose.yml` bind-mounts `config.yaml` read-only and loads `.env` via `env_file`, so editing either on the host takes effect on the container's next scheduled run without a rebuild.
+
+```bash
+docker compose up -d
+```
+
+#### Production deployment (jazz)
+
+In production this runs as the `ai-daily-content-collector` service in the `~/src/docker` infra repo's `jazz/docker-compose.yml`, deployed remotely via `docker context use jazz` (see that repo's `CLAUDE.md` for the full setup). Two things to know if you're changing `config.yaml` or the app code:
+
+- **Build context**: `jazz/docker-compose.yml` builds with `context: ../../ai-daily-content-collector`, i.e. this repo checked out locally at `~/src/ai-daily-content-collector`. Because deploys run via `docker context use jazz` from that local checkout, code changes just need a local commit/checkout — `docker compose up -d --build` sends the local build context to the remote daemon.
+- **`config.yaml` bind mount**: unlike the build context, bind mount sources are resolved on jazz's own filesystem, not sent from the local client. `~/src/ai-daily-content-collector/config.yaml` on jazz is a standalone file (not a git checkout) and does **not** sync automatically from this repo or from your local machine. After editing `config.yaml` locally, copy it to jazz by hand:
+  ```bash
+  scp ~/src/ai-daily-content-collector/config.yaml jazz.eastfamily.io:~/src/ai-daily-content-collector/config.yaml
+  ```
+  No rebuild or restart is needed afterward — the container reads the file fresh on each scheduled run.
 
 ## 🎨 Customizing the Email Template
 
