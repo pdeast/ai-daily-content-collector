@@ -113,7 +113,6 @@ Provide only the summary, without any preamble."""
                 response = self.client.messages.create(
                     model=self.model,
                     max_tokens=200,
-                    temperature=0.7,
                     system="You are a helpful assistant that creates concise, insightful summaries of news articles and blog posts.",
                     messages=[
                         {"role": "user", "content": prompt}
@@ -223,7 +222,6 @@ Provide only the summary, without any preamble."""
                 response = self.client.messages.create(
                     model=self.model,
                     max_tokens=800,
-                    temperature=0.7,
                     system="You are an expert research assistant that provides high-quality recommendations for staying informed in technology domains. Only provide specific, actionable recommendations that you are confident about.",
                     messages=[
                         {"role": "user", "content": prompt}
@@ -445,7 +443,6 @@ Provide only the summary, without any preamble."""
                         response = self.client.messages.create(
                             model=self.model,
                             max_tokens=400,
-                            temperature=0.7,
                             system="You are an expert research assistant that provides specific reading recommendations based on expert knowledge.",
                             messages=[
                                 {"role": "user", "content": reading_prompt}
@@ -534,7 +531,6 @@ Provide only the summary, without any preamble."""
                         response = self.client.messages.create(
                             model=self.model,
                             max_tokens=300,
-                            temperature=0.7,
                             system="You are an expert research assistant that provides specific academic paper recommendations.",
                             messages=[
                                 {"role": "user", "content": paper_prompt}
@@ -620,7 +616,6 @@ Provide only the summary, without any preamble."""
                         response = self.client.messages.create(
                             model=self.model,
                             max_tokens=300,
-                            temperature=0.7,
                             system="You are an expert research assistant that provides specific learning resource recommendations.",
                             messages=[
                                 {"role": "user", "content": tool_prompt}
@@ -711,7 +706,6 @@ There are {total_articles} total articles. Make it personal and energetic, like 
                 response = self.client.messages.create(
                     model=self.model,
                     max_tokens=150,
-                    temperature=0.8,
                     system="You are a friendly assistant creating personalized daily briefings.",
                     messages=[
                         {"role": "user", "content": prompt}
